@@ -45,7 +45,7 @@ of writing our own link tags in the header. */
 function project_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
-	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+	wp_enqueue_style('fontawesome', '//use.fontawesome.com/releases/v5.0.7/css/all.css');
 }
 
 add_action( 'wp_enqueue_scripts', 'project_styles');
@@ -59,7 +59,7 @@ function project_scripts() {
 	wp_deregister_script('jquery');
   wp_enqueue_script(
   	'jquery',
-  	"http" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js",
+  	"https" . ($_SERVER['SERVER_PORT'] == 443 ? "s" : "") . "://code.jquery.com/jquery-latest.min.js",
   	false, //dependencies
   	null, //version number
   	true //load in footer
@@ -77,6 +77,13 @@ function project_scripts() {
     'scripts', //handle
     get_template_directory_uri() . '/js/main.min.js', //source
     array( 'jquery', 'plugins' ), //dependencies
+    null, // version number
+    true //load in footer
+  );
+    wp_enqueue_script(
+    'imagezoom', //handle
+    get_template_directory_uri() . '/js/image-zoom.js', //source
+    false,
     null, // version number
     true //load in footer
   );
